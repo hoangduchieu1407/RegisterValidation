@@ -77,7 +77,7 @@ function validationPassword(password) {
 }
 
 function validationComfirmPassword(comfirmpassword) {
-  let nul = KiemTraTruongRong(password);
+  let nul = KiemTraTruongRong(comfirmpassword);
   let trungkhop = KiemTraTrungKhopMatKhau(password, comfirmpassword);
   if (nul == false) {
     BaoDongDo(comfirmpassword, "Trường này bắt buộc");
