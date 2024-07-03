@@ -34,19 +34,31 @@ function KiemTraDoDaiTruong(input, min) {
  */
 
 function KiemTraNguoiDungTonTai(username) {
-  username.value = username.value.trim();
+  //   username.value = username.value.trim();
+  //   Users.forEach((item, index) => {
+  //     if (username.value === item.username) {
+  //       return true;
+  //     }
+  //   });
+  //   return false;
+  let user = username.value.trim();
+  let isExist = 0;
   Users.forEach((item, index) => {
-    if (username.value === item.username) {
-      return true;
+    if (user === item.username) {
+      isExist = 1;
     }
   });
-  return false;
+  if (isExist == 1) {
+    return true;
+  } else if (isExist == 0) {
+    return false;
+  }
 }
 
 /**
  * Kiểm tra tên đăng nhập kí tự đầu tiên không phải số
  * @param {*} username
- * @returns
+ * @returns true nếu kí tự đầu tiên là số
  */
 
 function KiemTraTenNguoiDungDungDinhDang(username) {
@@ -56,7 +68,7 @@ function KiemTraTenNguoiDungDungDinhDang(username) {
 /**
  * Kiểm tra email đúng định dạng
  * @param {*} email
- * @returns
+ * @returns true nếu email đúng định dạng
  */
 function KiemTraEmailDungDinhDang(email) {
   const regexEmail =
@@ -68,21 +80,26 @@ function KiemTraEmailDungDinhDang(email) {
 /**
  * Kiểm tra địa chỉ email đã được đăng kí trước đó chưa
  * @param {*} email
- * @returns
+ * @returns true nếu email đã được đăng ký rồi
  */
 function KiemTraEmailTonTai(email) {
-  email.value = email.value.trim();
+  let _email = email.value.trim();
+  let isExist = 0;
   Users.forEach((item, index) => {
-    if (email.value === item.email) {
-      return true;
+    if (_email === item.email) {
+      isExist = 1;
     }
   });
-  return false;
+  if (isExist == 1) {
+    return true;
+  } else if (isExist == 0) {
+    return false;
+  }
 }
 /**
  * Kiểm tra số phone phải có 10 chữ số
  * @param {*} phone
- * @returns
+ * @returns true nếu phone đúng định dạng
  */
 function KiemTraPhoneDungDinhDang(phone) {
   var pattern = /^[0-9]{10}$/;
@@ -92,10 +109,31 @@ function KiemTraPhoneDungDinhDang(phone) {
   }
   return false;
 }
+
+/**
+ * Kiểm tra số điện thoại đã được đăng ký chưa
+ * @param {*} phone
+ * @returns return true là đã được đăng ký rồi
+ */
+function KiemTraPhoneDaTonTai(phone) {
+  let _phone = phone.value.trim();
+  let isExist = 0;
+  Users.forEach((item, index) => {
+    if (_phone === item.phone) {
+      isExist = 1;
+    }
+  });
+  if (isExist == 1) {
+    return true;
+  } else if (isExist == 0) {
+    return false;
+  }
+}
+
 /**
  * Kiểm tra mật khẩu phải có các ký tự Hoa, thường, ký tự số, ký tự đặc biệt
  * @param {*} password
- * @returns
+ * @returns true nếu password đúng định dạng
  */
 function KiemTraDoManhMatKhau(password) {
   password.value = password.value.trim();
@@ -107,7 +145,7 @@ function KiemTraDoManhMatKhau(password) {
  * Kiểm tra password  nhập có trùng nhau không
  * @param {*} password
  * @param {*} comfirmpassword
- * @returns
+ * @returns false nếu mật khẩu KHÔNG trùng nhau
  */
 function KiemTraTrungKhopMatKhau(password, comfirmpassword) {
   if (password.value.trim() !== comfirmpassword.value.trim()) {

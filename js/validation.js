@@ -12,7 +12,7 @@ function validationUsername(username) {
       output = false;
     } else {
       if (tontai == true) {
-        BaoDongDo(username, "Người dùng đã tồn tại");
+        BaoDongDo(username, `Người dùng ${username.value} đã tồn tại`);
         output = false;
       } else {
         ThongBaoHoanThanh(
@@ -40,7 +40,7 @@ function validationEmail(email) {
       output = false;
     } else {
       if (tontai == true) {
-        BaoDongDo(email, "Email đã tồn tại");
+        BaoDongDo(email, "Email đã được đăng ký bởi tài khoản khác");
         output = false;
       } else {
         ThongBaoHoanThanh(email, `Email ${email.value} có thể sử dụng`);
@@ -54,6 +54,7 @@ function validationEmail(email) {
 function validationPhone(phone) {
   let nul = KiemTraTruongRong(phone);
   let dinhdang = KiemTraPhoneDungDinhDang(phone);
+  let tontai = KiemTraPhoneDaTonTai(phone);
   output = false;
   if (nul == false) {
     BaoDongDo(phone, "Trường này bắt buộc");
@@ -61,6 +62,9 @@ function validationPhone(phone) {
   } else {
     if (dinhdang == false) {
       BaoDongDo(phone, "Vui lòng nhập đúng định dạng số điện thoại");
+      output = false;
+    } else if (tontai == true) {
+      BaoDongDo(phone, "Số điện thoại đã được đăng ký bởi tài khoản khác!");
       output = false;
     } else {
       ThongBaoHoanThanh(phone, `Số điện thoại ${phone.value} có thể sử dụng`);
