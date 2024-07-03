@@ -7,6 +7,13 @@ function KiemTraTruongRong(input) {
   }
 }
 
+/**
+ * Kiểm tra trường nhập vào phải có độ dài nhỏ nhất là min
+ * @param {*} input
+ * @param {*} min
+ * @returns false nếu độ đài input nhỏ hơn min
+ */
+
 function KiemTraDoDaiTruong(input, min) {
   let lenPass = input.value.length;
   if (lenPass < min) {
@@ -14,6 +21,12 @@ function KiemTraDoDaiTruong(input, min) {
   }
   return true;
 }
+
+/**
+ * Kiểm tra tên username có tồn trong mảng Users
+ * @param {*} username
+ * @returns true nếu em còn tồn tại
+ */
 
 function KiemTraNguoiDungTonTai(username) {
   username.value = username.value.trim();
@@ -70,6 +83,3 @@ function KiemTraTrungKhopMatKhau(password, comfirmpassword) {
   }
   return true;
 }
-
-// a = "agafafgafgaf";
-// console.log(/[0-9]/.test(a[0]));
