@@ -1,3 +1,8 @@
+/**
+ * Kiểm tra trường input có rộng không
+ * @param {*} input
+ * @returns false nếu trường rỗng
+ */
 function KiemTraTruongRong(input) {
   input.value = input.value.trim();
   if (input.value) {
@@ -38,11 +43,21 @@ function KiemTraNguoiDungTonTai(username) {
   return false;
 }
 
+/**
+ * Kiểm tra tên đăng nhập kí tự đầu tiên không phải số
+ * @param {*} username
+ * @returns
+ */
+
 function KiemTraTenNguoiDungDungDinhDang(username) {
   username.value = username.value.trim();
   return /[0-9]/.test(username.value[0]);
 }
-
+/**
+ * Kiểm tra email đúng định dạng
+ * @param {*} email
+ * @returns
+ */
 function KiemTraEmailDungDinhDang(email) {
   const regexEmail =
     /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
@@ -50,7 +65,11 @@ function KiemTraEmailDungDinhDang(email) {
   let isEmail = regexEmail.test(email.value);
   return isEmail;
 }
-
+/**
+ * Kiểm tra địa chỉ email đã được đăng kí trước đó chưa
+ * @param {*} email
+ * @returns
+ */
 function KiemTraEmailTonTai(email) {
   email.value = email.value.trim();
   Users.forEach((item, index) => {
@@ -60,7 +79,11 @@ function KiemTraEmailTonTai(email) {
   });
   return false;
 }
-
+/**
+ * Kiểm tra số phone phải có 10 chữ số
+ * @param {*} phone
+ * @returns
+ */
 function KiemTraPhoneDungDinhDang(phone) {
   var pattern = /^[0-9]{10}$/;
   phone.value = phone.value.trim();
@@ -69,14 +92,23 @@ function KiemTraPhoneDungDinhDang(phone) {
   }
   return false;
 }
-
+/**
+ * Kiểm tra mật khẩu phải có các ký tự Hoa, thường, ký tự số, ký tự đặc biệt
+ * @param {*} password
+ * @returns
+ */
 function KiemTraDoManhMatKhau(password) {
   password.value = password.value.trim();
   return /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,}$/.test(
     password.value
   );
 }
-
+/**
+ * Kiểm tra password  nhập có trùng nhau không
+ * @param {*} password
+ * @param {*} comfirmpassword
+ * @returns
+ */
 function KiemTraTrungKhopMatKhau(password, comfirmpassword) {
   if (password.value.trim() !== comfirmpassword.value.trim()) {
     return false;

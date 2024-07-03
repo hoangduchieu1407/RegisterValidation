@@ -2,7 +2,7 @@ var username = document.querySelector("#username");
 var email = document.querySelector("#email");
 var password = document.querySelector("#password");
 var comfirmpassword = document.querySelector("#comfirmpassword");
-var btnSubmit = document.querySelector(".btn-submit");
+var form = document.querySelector("form");
 
 username.addEventListener("focus", () => {
   validationUsername(username);
@@ -62,4 +62,24 @@ comfirmpassword.addEventListener("keyup", () => {
 
 comfirmpassword.addEventListener("blur", () => {
   validationComfirmPassword(comfirmpassword);
+});
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let valiUsername = validationUsername(username);
+  let valiEmail = validationEmail(email);
+  let valiPhone = validationPhone(phone);
+  let valiPassword = validationPassword(password);
+  let valiComfirmPassword = validationComfirmPassword(comfirmpassword);
+  if (
+    valiUsername &&
+    valiEmail &&
+    valiPhone &&
+    valiPassword &&
+    valiComfirmPassword
+  ) {
+    alert(
+      `Bạn đã đăng ký thành công với tên ${username.value} email ${email.value} số điện thoại ${phone.value}`
+    );
+  }
 });
