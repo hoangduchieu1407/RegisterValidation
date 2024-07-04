@@ -16,7 +16,7 @@ body {
   padding: 30px 30px;
   width: 400px;
   display: flex;
-  gap: 30px;
+  gap: 15px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -104,4 +104,8 @@ h1 {
 
 .form-group.success input {
   border-bottom: 3px solid blue;
+}
+
+.form-group small {
+  font-style: italic;
 }
